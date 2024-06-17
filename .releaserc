@@ -33,7 +33,10 @@
       {
         "assets": [
           {
-            "path": "build/libs/revanced-patches*"
+            "path": "build/libs/gmscore-patches*"
+          },
+          {
+            "path": "patches.json"
           }
         ],
         successComment: false

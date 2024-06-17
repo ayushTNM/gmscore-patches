@@ -23,6 +23,11 @@ jobs:
       - name: Cache Gradle
         uses: burrunan/gradle-cache-action@v1
 
+      - name: Run API Dump
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./gradlew apiDump
+
       - name: Build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
