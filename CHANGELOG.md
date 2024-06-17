@@ -1,3 +1,10 @@
+# [1.0.0-dev.2](https://github.com/ayushTNM/gmscore-patches/compare/v1.0.0-dev.1...v1.0.0-dev.2) (2024-06-17)
+
+
+### Features
+
+* **GmsCore:** add `Custom branding name` patch ([788c001](https://github.com/ayushTNM/gmscore-patches/commit/788c001c67f30aa2affb664280a5918f747e41bd))
+
 # 1.0.0-dev.1 (2024-06-17)
 
 
