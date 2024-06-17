@@ -1,3 +1,10 @@
+# 1.0.0-dev.1 (2024-06-17)
+
+
+### Features
+
+* **GmsCore:** add `Hide icon from launcher` patch ([dc70e7a](https://github.com/ayushTNM/gmscore-patches/commit/dc70e7a5c366f3ccd184b6f4d2452618b85ea371))
+
 ## [1.0.1](https://github.com/ReVanced/revanced-patches-template/compare/v1.0.0...v1.0.1) (2024-02-21)
 
 
