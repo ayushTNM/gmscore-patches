@@ -2,9 +2,10 @@ package app.revanced.patches.gmscore.branding.name
 
 import app.revanced.patcher.data.ResourceContext
 import app.revanced.patcher.patch.options.PatchOption.PatchExtensions.stringPatchOption
-import app.revanced.util.StringsElementsUtils.removeStringsElements
 import app.revanced.patcher.patch.ResourcePatch
 import app.revanced.util.valueOrThrow
+import org.w3c.dom.Element
+
 
 //@Suppress("DEPRECATION", "unused")
 object CustomBrandingNamePatch : ResourcePatch(
@@ -34,23 +35,49 @@ object CustomBrandingNamePatch : ResourcePatch(
         val appName = AppName
             .valueOrThrow()
 
-        context.removeStringsElements(
-            arrayOf("gms_app_name", "gms_settings_name")
-        )
+        val stockNames = arrayOf("microG GmsCore", "microG", "GmsCore")
 
-        context.xmlEditor["res/values/strings.xml"].use { editor ->
-            val document = editor.file
+        val resourceDirectory = context.get("res", false)
 
-            mapOf(
-                "gms_app_name" to appName,
-                "gms_settings_name" to appName
-            ).forEach { (k, v) ->
-                val stringElement = document.createElement("string")
+        for (file in resourceDirectory.listFiles()!!) {
+            val path = file.name
+            if (!path.startsWith("values")) continue
 
-                stringElement.setAttribute("name", k)
-                stringElement.textContent = v
+            val targetXml = resourceDirectory.resolve(path).resolve("strings.xml")
 
-                document.getElementsByTagName("resources").item(0).appendChild(stringElement)
+            if (!targetXml.exists()) continue
+
+            context.xmlEditor[targetXml.absolutePath].use { editor ->
+                val resourcesNode =
+                    editor.file.getElementsByTagName("resources").item(0) as Element
+                var label = ""
+
+                for (i in 0 until resourcesNode.childNodes.length) {
+
+                    val element = resourcesNode.childNodes.item(i) as? Element ?: continue
+                    when (element.getAttribute("name")) {
+                        "gms_app_name" -> {
+                            if (label == "")
+                                label = element.textContent
+
+                            element.textContent = appName
+                        }
+
+                        "gms_settings_name" -> element.textContent = appName
+
+                        else -> continue
+                    }
+                }
+
+                for (i in 0 until resourcesNode.childNodes.length) {
+                    val element = resourcesNode.childNodes.item(i) as? Element ?: continue
+                    arrayOf(label, *stockNames).forEach {
+                        if (element.textContent.contains(it)) {
+                            element.textContent = element.textContent.replace(it, appName)
+                            return@forEach
+                        }
+                    }
+                }
             }
         }
     }
