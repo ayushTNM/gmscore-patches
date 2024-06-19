@@ -5,6 +5,18 @@
 
 * **GmsCore/Custom branding name:** Replace more occurences of name strings ([ab80dc6](https://github.com/ayushTNM/gmscore-patches/commit/ab80dc6cb095ab7119eea4ef393ab2a50612a0a4))
 
+
+### Features
+
+* **GmsCore:** add `Custom branding icon` patch ([5bdddb6](https://github.com/ayushTNM/gmscore-patches/commit/5bdddb6d1a0ebc9ee2de8589f408b916e6ce700a))
+
+# [1.0.0-dev.3](https://github.com/ayushTNM/gmscore-patches/compare/v1.0.0-dev.2...v1.0.0-dev.3) (2024-06-19)
+
+
+### Bug Fixes
+
+* **GmsCore/Custom branding name:** Replace more occurences of name strings ([ab80dc6](https://github.com/ayushTNM/gmscore-patches/commit/ab80dc6cb095ab7119eea4ef393ab2a50612a0a4))
+
 # [1.0.0-dev.2](https://github.com/ayushTNM/gmscore-patches/compare/v1.0.0-dev.1...v1.0.0-dev.2) (2024-06-17)
 
 
